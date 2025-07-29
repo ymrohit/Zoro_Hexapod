@@ -96,3 +96,38 @@ Our services include:
 Our code and circuit are open source. You can obtain the details and the latest information through visiting the following web site:
 
 http://www.freenove.com
+
+## FastAPI Control Server
+
+This repository now includes a FastAPI application exposing HTTP endpoints to control nearly every hardware component on the robot. The server lives at `Code/Server/fastapi_server.py`.
+
+### Install requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run the server
+
+```bash
+python Code/Server/fastapi_server.py
+```
+
+Once running, visit `http://<robot_ip>:8000/docs` to view the automatic API documentation and interact with the available endpoints.
+
+### Available Endpoints
+
+- `GET /parts` – list available servos, legs and sensors along with current servo state.
+- `POST /servo/{channel}` – set a servo angle (0‑180).
+- `GET /servo/{channel}` – retrieve the last angle set for a servo.
+- `POST /servo/{channel}/sweep` – sweep a servo through a range.
+- `POST /leg/{id}` – set all three joint angles of a leg.
+- `GET /leg/{id}` – read back current angles of a leg.
+- `POST /leg/{id}/sweep` – sweep all servos of a leg together.
+- `POST /relax` – relax or unrelax all servos (`{"state": true}`).
+- `POST /servo_power` – enable or disable servo power (`{"enabled": true}`).
+- `POST /move` – run a basic gait (parameters: `gait`, `x`, `y`, `speed`, `angle`).
+- `POST /led` – change LED mode and color.
+- `POST /buzzer` – turn the buzzer on or off.
+- `GET /distance` – read the ultrasonic sensor.
+- `GET /battery` – read the battery voltages.
