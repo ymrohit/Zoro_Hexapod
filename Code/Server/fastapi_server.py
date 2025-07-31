@@ -33,6 +33,7 @@ LEG_MAP = {
     6: [16, 17, 18],
 }
 
+
 class Angle(BaseModel):
     angle: int
 

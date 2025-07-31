@@ -22,7 +22,7 @@ class Control:
         self.servo_power_disable.off()
         self.status_flag = 0x00
         self.timeout = 0
-        self.body_height = -25
+        self.body_height = -50
         self.body_points = [[137.1, 189.4, self.body_height], [225, 0, self.body_height], [137.1, -189.4, self.body_height], 
                            [-137.1, -189.4, self.body_height], [-225, 0, self.body_height], [-137.1, 189.4, self.body_height]]
         self.calibration_leg_positions = self.read_from_txt('point')
